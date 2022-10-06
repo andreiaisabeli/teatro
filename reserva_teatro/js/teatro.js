@@ -19,6 +19,21 @@ window.addEventListener("load", () =>{
         const imgStatus = document.createElement("img"); //cria a tag img
 
         //se a posicao estiver ocupada, exibe a  img ocupada, se nao, a img escolhida
-        imgStatus.src = ocupada
+        imgStatus.src = ocupadas.includes(i.toString())
+        ? "img/ocupada.jpg"
+        : "img/disponivel.jpg";
+        imgStatus.className = "poltrona"; //classe com a dimensao da imagem
+
+        const figureCap = document.createElement("figcaption"); 
+
+        //numero de 0 antes do numero da poltrona
+        const zeros = i < 10 ? "00" : i < 100 ? "0" : "";
+
+        const num = document.createTextNode(`[${zeros}${i}]`); //cria o texto
+
+        //define os pais de cada tag criada
+        figureCap.appendChild(num);
+        figure.appendChild(imgStatus);
+        figure.appendChild(figureCap);
     }
 })
