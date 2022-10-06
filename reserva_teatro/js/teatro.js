@@ -35,5 +35,10 @@ window.addEventListener("load", () =>{
         figureCap.appendChild(num);
         figure.appendChild(imgStatus);
         figure.appendChild(figureCap);
+
+        if (i% 24 == 12) figure.style.marginRight = "60px"
+        dvPalco.appendChild(figure);
+
+        (i % 24 == 0) && dvPalco.appendChild(document.createElement("br"));
     }
 })
