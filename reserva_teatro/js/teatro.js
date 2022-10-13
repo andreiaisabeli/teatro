@@ -78,4 +78,31 @@ frm.addEventListener("submit", (e) => {
     frm.inPoltrona.value = "";
     frm.inPoltrona.focus();
 
+});
+
+frm.btConfirmar.addEventListener("click",() =>{
+    //verificar se não a poltronas reservadas
+    if(reservadas.length == 0){
+        alert("Não a poltronas reservadas!!")
+        frm.inPoltrona.focus()
+        return;
+    }
+    const ocupadas = localStorage.getItem("teatroOcupadas")
+    ? localStorage.getItem("teatroOcupadas").split(";")
+    : [];
+
+    //for decrescente, pois as reservadas vao sendo removidas a cada alteracao
+    for (let i = reservadas.length - 1; i >= 0; i--){
+        ocupadas.push(reservadas[i]);
+
+        // captura a imagem da poltrona, filha e divPalco. É -1 pois começa em 0
+        const imgPoltrona = dvPalco.querySelectorAll("img")[reservadas[i] - 1];
+        // modifica a imagem
+        imgPoltrona.src = "img/ocupada.jpg";
+        // remove do vetor a reserva já alterada
+        reservadas.pop()
+    }
+    localStorage.setItem("teatroOcupadas",ocupadas.join(";"));
 })
+
+
