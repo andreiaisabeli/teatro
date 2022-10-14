@@ -116,9 +116,7 @@ frm.btCancelar.addEventListener("click", (e) => {
     if (ocupadas.includes(poltrona.toString())) {
       const imgPoltrona = dvPalco.querySelectorAll("img")[poltrona - 1];
       imgPoltrona.src = "img/disponivel.jpg"; //modifica o atributo da img
-  
       reservadas.pop();
-  
       frm.inPoltrona.value = "";
       frm.inPoltrona.focus();
     }
