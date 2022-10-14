@@ -103,6 +103,25 @@ frm.btConfirmar.addEventListener("click",() =>{
         reservadas.pop()
     }
     localStorage.setItem("teatroOcupadas",ocupadas.join(";"));
-})
+});
+
+frm.btCancelar.addEventListener("click", (e) => {
+    e.preventDefault();
+    //obtem conteudo do input
+    const poltrona = Number(frm.inPoltrona.value); //parte do codigo de cima
+    alert("Você deseja cancelar a reserva feita na poltrona " + poltrona + "?")
+    frm.inPoltrona.focus
+    const ocupadas = localStorage.getItem("teatroOcupadas");
+  
+    if (ocupadas.includes(poltrona.toString())) {
+      const imgPoltrona = dvPalco.querySelectorAll("img")[poltrona - 1];
+      imgPoltrona.src = "img/disponivel.jpg"; //modifica o atributo da img
+  
+      reservadas.pop();
+  
+      frm.inPoltrona.value = "";
+      frm.inPoltrona.focus();
+    }
+  });
 
 
